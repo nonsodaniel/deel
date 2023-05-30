@@ -27,16 +27,18 @@ DO NOT USE ANY WEB OR OTHER RESOURCE.
     current state and props with the new `state` and `props`.
     This shallow comparison is done to remove unecessary rerender and determine the rerendering of the component,
     thereby leading to an increase in performance of the Application.
-* `Component doesn'`t implements `shouldComponentUpdate()` lifecyle method and no shallow comparison is done,
+* `Component` doesn't implement `shouldComponentUpdate()` lifecyle method and no shallow comparison is done,
     which causes re-render whenever there's a change in props.
 
-    Example: 		If an application, **NOT** using `React.PureComponent`, contains expensive computations 
+    Example: If an application, **NOT** using `React.PureComponent`, contains expensive computations 
      which causes it to re-render, the re-rendering can lead to an **Infinite loop** which 
       can result in **breaking the application and even crash the device the application is running on**.
 
 
 ## 2. Context + ShouldComponentUpdate might be dangerous. Why is that? 
 `ShouldComponentUpdate` depends on using props and state to determine component rerendering.
+ Using `ShouldComponentUpdate()`  + `context` could inroduce a bug as result of the compoonent failing to update, when there's a change in the value of the `context`.
+ The component will not re-render in such occurence.
 
 
 ## 3. Describe 3 ways to pass information from a component to its PARENT.
@@ -73,6 +75,9 @@ Example:
 
 
 ## 6. Give 3 examples of the HOC pattern.
+
+1. Redux connect HOC
+2. WithRouter HOC
 
 
 ## 7. What's the difference in handling exceptions in promises, callbacks and async…await?
@@ -214,7 +219,7 @@ const onselect = (event) => {
 1. Using Inline Style inside the React Component: 
  ```jsx
 	<p style={{color: 'red'}}> This is a red description!</p>
-	```
+```
 2. Adding Global Style to “index.html”
 3  Importing your style File directly inside the Components
 4. Making use of style objects which can easily be passed in the style props: 
@@ -239,3 +244,8 @@ let myComponentStyle = {
 
 ## 11. How to render an HTML string coming from the server: 
 1.  Making use of `dangerouslySetInnerHTML`
+2. `html-react-parser` library can also be used to replace `dangerouslySetInnerHTML` due to it's high level of exposure to `XSS attack`
+
+
+
+
