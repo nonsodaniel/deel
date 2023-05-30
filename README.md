@@ -6,6 +6,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+### `yarn` or `npm init`
+
+This installs all available dependencies.
+
 ### `yarn start`
 
 Runs the app in the development mode.\
@@ -20,7 +24,8 @@ Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 A sample screenshot of what the Application looks like can be found below.
-Features: 
+Features:
+
 1. Ability to search and get realtime auto-complete results.
 2. Auto-complete list contains highlighted texts that matches the search value.
 3. ESC key functionality.
