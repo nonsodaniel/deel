@@ -4,10 +4,13 @@ import "./container.css";
 import useFetch from "../../hooks/useFetch";
 import { IPokemon } from "../types";
 import Lists from "./Lists";
+import StatusMessages from "./StatusMessages";
 
 const Container = () => {
   const [pokemanMatch, setPokemanMatch] = useState<IPokemon[]>([]);
   const [searchValue, setSearchValue] = useState<string>("");
+  const [selectedItems, setSelectedItems] = useState<IPokemon[]>([]);
+  const [isListsVisible, setIsListsVisible] = useState<boolean>(false);
   const { data, loading, error } = useFetch(
     "https://pokeapi.co/api/v2/pokemon/"
   );
@@ -22,9 +25,28 @@ const Container = () => {
     setPokemanMatch(matches);
   };
 
+  const getName = (item: IPokemon) => {
+    handleFocus();
+    setSelectedItems([...selectedItems, item]);
+  };
+
+  console.log(selectedItems);
+  const resetSearchValue = () => {
+    setSearchValue("");
+    setPokemanMatch([]);
+  };
+  const handleFocus = () => setIsListsVisible(true);
   return (
-    <div className="container">
+    <div className="container" onMouseDown={() => setIsListsVisible(false)}>
       <div className="auto-complete">
+        <div className="selected-items">
+          {!!selectedItems.length &&
+            selectedItems.map((item) => (
+              <span className="selected-items__pill" key={item.url}>
+                {item.name}
+              </span>
+            ))}
+        </div>
         <Input
           type="text"
           id="name"
@@ -35,8 +57,22 @@ const Container = () => {
           onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
             searchpokemans(event.target.value)
           }
+          onFocus={handleFocus}
+          resetSearchValue={resetSearchValue}
+          displayResetIcon={true}
         />
-        <Lists
+        {isListsVisible && (
+          <Lists
+            pokemanMatch={pokemanMatch}
+            searchValue={searchValue}
+            data={data}
+            loading={loading}
+            error={error}
+            getName={getName}
+          />
+        )}
+
+        <StatusMessages
           pokemanMatch={pokemanMatch}
           searchValue={searchValue}
           data={data}

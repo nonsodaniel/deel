@@ -6,6 +6,9 @@ interface IInputProps {
   value: string;
   required: boolean;
   onChange: React.ChangeEventHandler<HTMLInputElement>;
+  resetSearchValue: () => void;
+  displayResetIcon: boolean;
+  onFocus: () => void;
 }
 
 const Input = ({
@@ -15,7 +18,10 @@ const Input = ({
   placeholder,
   value,
   onChange,
+  onFocus,
+  resetSearchValue,
   required,
+  displayResetIcon = true,
 }: IInputProps) => {
   return (
     <div className="form-group">
@@ -28,8 +34,13 @@ const Input = ({
         maxLength={35}
         onChange={onChange}
         required={required}
+        onFocus={onFocus}
       />
-      <span className="cancel-wrap">X</span>
+      {displayResetIcon && (
+        <span className="cancel-wrap" onClick={() => resetSearchValue()}>
+          X
+        </span>
+      )}
     </div>
   );
 };

@@ -1,20 +1,11 @@
-import { IPokemon } from "../types";
+import { IPokemonComponentProps } from "../types";
 import List from "./List";
-interface IListProps {
-  pokemanMatch: IPokemon[];
-  searchValue: string;
-  data: IPokemon[];
-  loading: boolean;
-  error: string;
-}
 
 const Lists = ({
   pokemanMatch,
   searchValue,
-  data,
-  loading,
-  error,
-}: IListProps) => {
+  getName,
+}: IPokemonComponentProps) => {
   return (
     <div className="dropdown">
       <ul
@@ -27,13 +18,16 @@ const Lists = ({
       >
         {pokemanMatch &&
           pokemanMatch.map((item) => {
-            return <List key={item.url} name={item.name} />;
+            return (
+              <List
+                key={item.url}
+                url={item.url}
+                name={item.name}
+                getName={getName}
+                searchValue={searchValue}
+              />
+            );
           })}
-        {searchValue && pokemanMatch.length === 0 && !!data.length && (
-          <li className="messsage__container">No match found!</li>
-        )}
-        {loading && <li className="messsage__container">Loading...</li>}
-        {!loading && error && <li className="messsage__container">{error}</li>}
       </ul>
     </div>
   );
