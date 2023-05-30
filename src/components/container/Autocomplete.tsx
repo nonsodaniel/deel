@@ -33,7 +33,7 @@ interface IAutocompleteProps {
   error: string;
 }
 const AutoComplete = ({ data, loading, error }: IAutocompleteProps) => {
-  const [pokemanMatch, setPokemanMatch] = useState<IPokemon[]>([]);
+  const [pokemonMatch, setPokemonMatch] = useState<IPokemon[]>([]);
   const [searchValue, setSearchValue] = useState<string>("");
   const [selectedItems, setSelectedItems] = useState<IPokemon[]>([]);
   const [isListsVisible, setIsListsVisible] = useState<boolean>(false);
@@ -53,7 +53,7 @@ const AutoComplete = ({ data, loading, error }: IAutocompleteProps) => {
       const isSelected = selectedItems.some((s) => s.name === pokemon.name);
       return pokemon.name.match(regex) && !isSelected;
     });
-    setPokemanMatch(matches);
+    setPokemonMatch(matches);
   }, [searchValue, selectedItems, data]);
 
   const getName = (item: IPokemon) => {
@@ -62,7 +62,7 @@ const AutoComplete = ({ data, loading, error }: IAutocompleteProps) => {
 
   const resetSearchValue = () => {
     setSearchValue("");
-    setPokemanMatch([]);
+    setPokemonMatch([]);
   };
   const handleFocus = () => setIsListsVisible(true);
 
@@ -70,7 +70,7 @@ const AutoComplete = ({ data, loading, error }: IAutocompleteProps) => {
     return null;
   }
 
-  const searchpokemans = (str: string) => {
+  const searchpokemons = (str: string) => {
     setSearchValue(str);
   };
 
@@ -91,10 +91,10 @@ const AutoComplete = ({ data, loading, error }: IAutocompleteProps) => {
             id="name"
             className="form-control search-box"
             value={searchValue}
-            placeholder={"Enter Pokeman name"}
+            placeholder={"Enter Pokemon name"}
             required={true}
             onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-              searchpokemans(event.target.value)
+              searchpokemons(event.target.value)
             }
             onFocus={handleFocus}
             resetSearchValue={resetSearchValue}
@@ -103,7 +103,7 @@ const AutoComplete = ({ data, loading, error }: IAutocompleteProps) => {
           />
           {isListsVisible && (
             <Lists
-              pokemanMatch={pokemanMatch}
+              pokemonMatch={pokemonMatch}
               searchValue={searchValue}
               loading={loading}
               error={error}
@@ -112,7 +112,7 @@ const AutoComplete = ({ data, loading, error }: IAutocompleteProps) => {
           )}
 
           <StatusMessages
-            pokemanMatch={pokemanMatch}
+            pokemonMatch={pokemonMatch}
             searchValue={searchValue}
             data={data}
             loading={loading}

@@ -3,7 +3,7 @@ import { IPokemonComponentProps } from "../types";
 import List from "./List";
 
 const Lists = ({
-  pokemanMatch,
+  pokemonMatch,
   searchValue,
   getName,
 }: IPokemonComponentProps) => {
@@ -12,13 +12,13 @@ const Lists = ({
       <ul
         className="list-wrap"
         style={{
-          border: !!pokemanMatch.length
+          border: !!pokemonMatch.length
             ? "1px solid rgba(0, 0, 0, 0.125)"
             : "none",
         }}
       >
-        {pokemanMatch &&
-          pokemanMatch.map((item) => {
+        {pokemonMatch &&
+          pokemonMatch.map((item) => {
             return (
               <List
                 key={uuid()}

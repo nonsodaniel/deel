@@ -3,13 +3,13 @@ import { IPokemonComponentProps } from "../types";
 
 const StatusMessages = ({
   searchValue,
-  pokemanMatch,
+  pokemonMatch,
   data,
   loading,
   error,
 }: IPokemonComponentProps) => {
   const noMatch =
-    searchValue && data && pokemanMatch.length === 0 && pokemanMatch;
+    searchValue && data && pokemonMatch.length === 0 && pokemonMatch;
 
   return (
     <Fragment>

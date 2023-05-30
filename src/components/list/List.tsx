@@ -20,7 +20,7 @@ const List = ({ name, getName, url, searchValue }: IListProps) => {
             key={uuid()}
             style={
               string.toLowerCase() === highlightedText.toLowerCase()
-                ? { fontWeight: "bold" }
+                ? { fontWeight: "bold", color: "hsla(11,100%,62.2%,1)" }
                 : {}
             }
           >

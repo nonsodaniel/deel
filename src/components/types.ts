@@ -4,7 +4,7 @@ export interface IPokemon {
 }
 
 export interface IPokemonComponentProps {
-  pokemanMatch: IPokemon[];
+  pokemonMatch: IPokemon[];
   searchValue: string;
   data?: IPokemon[];
   loading: boolean;
