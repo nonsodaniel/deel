@@ -12,34 +12,8 @@ body {
   font-family: Circular Std;
 }
 
-.font-20 {
-  font-size: 20px;
-}
-.text-center {
-  text-align: center;
-}
 .pointer {
   cursor: pointer;
-}
-
-.btn {
-  padding: 15px 40px;
-  border-radius: 5px;
-  font-weight: 500;
-  color: #d7dae0;
-  border: none;
-  cursor: pointer;
-}
-.btn-add {
-  background-color: #0061bc;
-}
-.btn-update {
-  background-color: #0095ff;
-}
-.card {
-  background: #fff;
-  border-radius: 0.428rem;
-  box-shadow: 0 4px 24px 0 rgb(34 41 47 / 10%);
 }
 
 .form-tag,
@@ -71,14 +45,4 @@ input[type="text"] {
 }
 .form-group {
   margin-bottom: 1rem;
-}
-.checkbox-group {
-  display: flex;
-  align-items: center;
-  font-size: 15px;
-  justify-content: space-between;
-}
-.checkbox-group label {
-  margin-left: 5px;
-  color: #495057;
 }

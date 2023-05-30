@@ -20,21 +20,19 @@
   position: absolute;
   top: 18px;
   right: 10px;
-  cursor: pointer;
   color: gray;
 }
 .list-wrap {
   list-style: none;
   border-radius: 6px;
   margin-top: 1rem;
-  border: 1px solid rgba(0, 0, 0, 0.125);
+  border: 1px solid rgba(195, 115, 115, 0.125);
   max-height: 23rem;
   overflow-y: scroll;
 }
 
 .list__item {
   padding: 1rem;
-  cursor: pointer;
 }
 .messsage__container {
   padding: 1rem;

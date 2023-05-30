@@ -40,7 +40,10 @@ const Input = ({
         data-testid={dataTestId}
       />
       {displayResetIcon && (
-        <span className="cancel-wrap" onClick={() => resetSearchValue()}>
+        <span
+          className="cancel-wrap pointer"
+          onClick={() => resetSearchValue()}
+        >
           X
         </span>
       )}
