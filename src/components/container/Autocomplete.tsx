@@ -76,7 +76,7 @@ const AutoComplete = ({ data, loading, error }: IAutocompleteProps) => {
   if (!data) {
     return null;
   }
-  console.log("inputRef", inputRef);
+
   return (
     <div
       ref={containerRef}
