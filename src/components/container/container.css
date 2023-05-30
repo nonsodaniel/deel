@@ -1,0 +1,43 @@
+.container {
+  width: 50%;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 1024px;
+}
+.auto-complete {
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 3rem;
+}
+.form-group {
+  position: relative;
+}
+.search-box {
+  padding: 15px;
+  font-size: 15px;
+}
+.cancel-wrap {
+  position: absolute;
+  top: 18px;
+  right: 10px;
+  cursor: pointer;
+  color: gray;
+}
+.list-wrap {
+  list-style: none;
+  border-radius: 6px;
+  margin-top: 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.list__item {
+  padding: 1rem;
+  cursor: pointer;
+}
+.notFound__listitem {
+  padding: 1rem;
+  text-align: center;
+}
+.list__item:hover {
+  background-color: hsl(0deg 0% 89.76%);
+}
