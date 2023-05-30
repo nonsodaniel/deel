@@ -12,9 +12,6 @@ function useClickOutside(
   handler: (event: MouseEvent) => void
 ) {
   useEffect(() => {
-    /**
-     * Alert if clicked on outside of element
-     */
     function handleClickOutside(event: MouseEvent) {
       if (ref.current && !ref.current.contains(event.target as Node)) {
         handler(event);
@@ -39,10 +36,7 @@ const AutoComplete = ({ data, loading, error }: IAutocompleteProps) => {
   const [isListsVisible, setIsListsVisible] = useState<boolean>(false);
 
   const containerRef = useRef<HTMLDivElement>(null);
-
-  useClickOutside(containerRef, () => {
-    setIsListsVisible(false);
-  });
+  const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (!data) {
@@ -59,6 +53,9 @@ const AutoComplete = ({ data, loading, error }: IAutocompleteProps) => {
   const getName = (item: IPokemon) => {
     setSelectedItems([...selectedItems, item]);
   };
+  const searchpokemons = (str: string) => {
+    setSearchValue(str);
+  };
 
   const resetSearchValue = () => {
     setSearchValue("");
@@ -66,16 +63,27 @@ const AutoComplete = ({ data, loading, error }: IAutocompleteProps) => {
   };
   const handleFocus = () => setIsListsVisible(true);
 
+  useClickOutside(containerRef, () => {
+    setIsListsVisible(false);
+  });
+
+  const handleKeyDown = (event: { key: string }) => {
+    if (event.key === "Escape") {
+      resetSearchValue();
+      setIsListsVisible(false);
+    }
+  };
   if (!data) {
     return null;
   }
-
-  const searchpokemons = (str: string) => {
-    setSearchValue(str);
-  };
-
+  console.log("inputRef", inputRef);
   return (
-    <div ref={containerRef} className="container" data-testid="container">
+    <div
+      ref={containerRef}
+      className="container"
+      data-testid="container"
+      onKeyDown={handleKeyDown}
+    >
       <div className="container-wrap">
         <div className="auto-complete" data-testid="autocomplete">
           <div className="selected-items">
@@ -100,6 +108,7 @@ const AutoComplete = ({ data, loading, error }: IAutocompleteProps) => {
             resetSearchValue={resetSearchValue}
             displayResetIcon={true}
             dataTestId={"search-bar"}
+            inputRef={inputRef}
           />
           {isListsVisible && (
             <Lists

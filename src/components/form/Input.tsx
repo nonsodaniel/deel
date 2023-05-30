@@ -10,6 +10,7 @@ interface IInputProps {
   displayResetIcon: boolean;
   onFocus: () => void;
   dataTestId: string;
+  inputRef: React.RefObject<HTMLInputElement>;
 }
 
 const Input = ({
@@ -24,6 +25,7 @@ const Input = ({
   required,
   displayResetIcon = true,
   dataTestId,
+  inputRef,
 }: IInputProps) => {
   return (
     <div className="form-group">
@@ -38,6 +40,7 @@ const Input = ({
         required={required}
         onFocus={onFocus}
         data-testid={dataTestId}
+        ref={inputRef}
       />
       {displayResetIcon && (
         <span
