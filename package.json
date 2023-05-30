@@ -1,5 +1,5 @@
 {
-  "name": "my-app",
+  "name": "React-autocomplete",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -41,7 +41,6 @@
     ]
   },
   "devDependencies": {
-    "@babel/preset-typescript": "^7.21.5",
-    "@types/react-router-dom": "^5.3.3"
+    "@babel/preset-typescript": "^7.21.5"
   }
 }

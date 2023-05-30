@@ -9,7 +9,6 @@ interface IInputProps {
   resetSearchValue: () => void;
   displayResetIcon: boolean;
   onFocus: () => void;
-  //   onBlur: () => void;
   dataTestId: string;
 }
 
@@ -21,7 +20,6 @@ const Input = ({
   value,
   onChange,
   onFocus,
-  //   onBlur,
   resetSearchValue,
   required,
   displayResetIcon = true,
@@ -39,7 +37,6 @@ const Input = ({
         onChange={onChange}
         required={required}
         onFocus={onFocus}
-        // onBlur={onBlur}
         data-testid={dataTestId}
       />
       {displayResetIcon && (

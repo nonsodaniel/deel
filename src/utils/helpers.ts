@@ -1,3 +1,5 @@
+import { IPokemon } from "../components/types";
+
 export const uuid = () => {
   return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
     var r = (Math.random() * 16) | 0,
@@ -6,7 +8,7 @@ export const uuid = () => {
   });
 };
 
-export const mockedData = [
+export const mockedData: IPokemon[] = [
   { name: "ivysaur", url: "https://pokeapi.co/api/v2/pokemon/2/" },
   { name: "venusaur", url: "https://pokeapi.co/api/v2/pokemon/3/" },
   { name: "charmander", url: "https://pokeapi.co/api/v2/pokemon/4/" },
