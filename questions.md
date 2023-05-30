@@ -6,7 +6,7 @@ DO NOT USE ANY WEB OR OTHER RESOURCE.
 
 - `React.PureComponent` implements `shouldComponentUpdate(`) lifecyle method by comparing the
   current state and props with the new `state` and `props`.
-  This shallow comparison is done to remove unecessary rerender and determine the rerendering of the component,
+  This shallow comparison is done to remove unecessary re-render and determine the re-rendering of the component,
   thereby leading to an increase in performance of the Application.
 - `Component` doesn't implement `shouldComponentUpdate()` lifecyle method and no shallow comparison is done,
   which causes re-render whenever there's a change in props.
@@ -17,8 +17,8 @@ DO NOT USE ANY WEB OR OTHER RESOURCE.
 
 ## 2. Context + ShouldComponentUpdate might be dangerous. Why is that?
 
-`ShouldComponentUpdate` depends on using props and state to determine component rerendering.
-Using `ShouldComponentUpdate()` + `context` could inroduce a bug as result of the compoonent failing to update, when there's a change in the value of the `context`.
+`ShouldComponentUpdate()` depends on using props and state to determine component re-rendering.
+Using `ShouldComponentUpdate()` + `context` could introduce a bug as result of the component failing to update, when there's a change in the value of the `context`.
 The component will not re-render in such occurence.
 
 ## 3. Describe 3 ways to pass information from a component to its PARENT.
@@ -63,7 +63,7 @@ There are libraries leveraging HOC design pattern such as:
 
 1. Redux connect HOC
 2. WithRouter HOC
-3. React-virtualize
+3. react-virtualized
 
 ## 7. What's the difference in handling exceptions in promises, callbacks and async…await?
 
