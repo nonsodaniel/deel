@@ -42,7 +42,6 @@
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.21.5",
-    "@types/react-modal": "^3.16.0",
     "@types/react-router-dom": "^5.3.3"
   }
 }
