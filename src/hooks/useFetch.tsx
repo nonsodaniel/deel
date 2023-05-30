@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 
 const useFetch = (urlString: string) => {
   const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string>("");
 
   useEffect(() => {
     const fetchApiData = async () => {
@@ -13,7 +13,7 @@ const useFetch = (urlString: string) => {
         setData(json.results);
         setLoading(false);
       } catch (error) {
-        setError(error);
+        setError("An error occured, kindly retry");
         setLoading(false);
       }
     };

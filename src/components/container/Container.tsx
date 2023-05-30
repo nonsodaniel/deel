@@ -2,8 +2,8 @@ import { useState } from "react";
 import Input from "../form/Input";
 import "./container.css";
 import useFetch from "../../hooks/useFetch";
-import List from "./List";
 import { IPokemon } from "../types";
+import Lists from "./Lists";
 
 const Container = () => {
   const [pokemanMatch, setPokemanMatch] = useState<IPokemon[]>([]);
@@ -18,6 +18,7 @@ const Container = () => {
       const regex = new RegExp(`${str}`, "gi");
       return pokemon.name.match(regex);
     });
+    console.log(matches);
     setPokemanMatch(matches);
   };
 
@@ -35,10 +36,12 @@ const Container = () => {
             searchpokemans(event.target.value)
           }
         />
-        <List
+        <Lists
           pokemanMatch={pokemanMatch}
           searchValue={searchValue}
           data={data}
+          loading={loading}
+          error={error}
         />
       </div>
     </div>
