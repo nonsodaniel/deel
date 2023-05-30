@@ -8,7 +8,7 @@ DO NOT USE ANY WEB OR OTHER RESOURCE.
   current state and props with the new `state` and `props`.
   This shallow comparison is done to remove unecessary rerender and determine the rerendering of the component,
   thereby leading to an increase in performance of the Application.
-- `Component doesn'`t implements `shouldComponentUpdate()` lifecyle method and no shallow comparison is done,
+- `Component` doesn't implement `shouldComponentUpdate()` lifecyle method and no shallow comparison is done,
   which causes re-render whenever there's a change in props.
 
   Example: If an application, **NOT** using `React.PureComponent`, contains expensive computations
@@ -18,6 +18,8 @@ DO NOT USE ANY WEB OR OTHER RESOURCE.
 ## 2. Context + ShouldComponentUpdate might be dangerous. Why is that?
 
 `ShouldComponentUpdate` depends on using props and state to determine component rerendering.
+Using `ShouldComponentUpdate()` + `context` could inroduce a bug as result of the compoonent failing to update, when there's a change in the value of the `context`.
+The component will not re-render in such occurence.
 
 ## 3. Describe 3 ways to pass information from a component to its PARENT.
 
@@ -54,6 +56,14 @@ looks like this `Adjacent JSX elements must be wrapped in an enclosing tag. Did 
 To avoid this error, when multiple elements are returned in a component that has no container wrapper like div or section, `<React.Fragment>` is used to wrap all other elements.
 
 ## 6. Give 3 examples of the HOC pattern.
+
+To the best of my knowledge, HOC itself is an example of React Design pattern. Based on my past experience working with
+
+There are libraries leveraging HOC design pattern such as:
+
+1. Redux connect HOC
+2. WithRouter HOC
+3. React-virtualize
 
 ## 7. What's the difference in handling exceptions in promises, callbacks and async…await?
 
@@ -221,27 +231,28 @@ function MyComponent(props) {
 
 1. Using Inline Style inside the React Component:
 
-````jsx
-	<p style={{color: 'red'}}> This is a red description!</p>
-	```
+```jsx
+<p style={{ color: "red" }}> This is a red description!</p>
+```
+
 2. Adding Global Style to “index.html”
-3  Importing your style File directly inside the Components
-4. Making use of style objects which can easily be passed in the style props:
+   3 Importing your style File directly inside the Components
+3. Making use of style objects which can easily be passed in the style props:
 
 ```jsx
 let myComponentStyle = {
- p: {
-   color: "red",
- },
- h1: {
-   color: "green"
- }
+  p: {
+    color: "red",
+  },
+  h1: {
+    color: "green"
+  }
 }
 <React.Fragment>
-     <h1 style={myComponentStyle.h1}> My Profile </h1>
-       <p style={myComponentStyle.p}>My name is Nonso</p>
-     <p style={myComponentStyle.p}>I love React!</p>
-</React.Fragment>
+      <h1 style={myComponentStyle.h1}> My Profile </h1>
+        <p style={myComponentStyle.p}>My name is Nonso</p>
+      <p style={myComponentStyle.p}>I love React!</p>
+ </React.Fragment>
 ```
 
 5. Making use of `CSS modules`
@@ -250,7 +261,4 @@ let myComponentStyle = {
 ## 11. How to render an HTML string coming from the server:
 
 1.  Making use of `dangerouslySetInnerHTML`
-2.  Due to the fact that `dangerouslySetInnerHTML` exposes the application to XSS attack,
-libraries such as html-react-parser can be used to ensure safety from XSS attack.
-
-````
+2.  `html-react-parser` library can also be used to replace `dangerouslySetInnerHTML` due to it's high level of exposure to `XSS attack`
