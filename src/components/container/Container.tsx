@@ -21,16 +21,12 @@ const Container = () => {
       const regex = new RegExp(`${str}`, "gi");
       return pokemon.name.match(regex);
     });
-    console.log(matches);
     setPokemanMatch(matches);
   };
-
   const getName = (item: IPokemon) => {
     handleFocus();
     setSelectedItems([...selectedItems, item]);
   };
-
-  console.log(selectedItems);
   const resetSearchValue = () => {
     setSearchValue("");
     setPokemanMatch([]);
