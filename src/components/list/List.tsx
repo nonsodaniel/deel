@@ -34,9 +34,15 @@ const List = ({ name, getName, url, searchValue }: IListProps) => {
     <li
       className="list__item pointer"
       id={url}
-      onClick={(event) =>
-        getName({ id: (event.target as HTMLInputElement).id, name })
-      }
+      onClick={(event) => {
+        event.stopPropagation();
+
+        if (event.target === event.currentTarget) {
+          event.stopPropagation();
+        }
+
+        getName({ id: (event.target as HTMLInputElement).id, name });
+      }}
     >
       {renderHighlightedText(name, searchValue)}
     </li>

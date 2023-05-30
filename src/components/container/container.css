@@ -1,11 +1,10 @@
 .container {
-  width: 50%;
+  width: 500px;
   margin-right: auto;
   margin-left: auto;
   max-width: 1024px;
 }
 .auto-complete {
-  max-width: 50%;
   margin: 0 auto;
   margin-top: 3rem;
 }

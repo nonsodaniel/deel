@@ -1,3 +1,4 @@
+import { uuid } from "../../utils/helpers";
 import { IPokemonComponentProps } from "../types";
 import List from "./List";
 
@@ -20,7 +21,7 @@ const Lists = ({
           pokemanMatch.map((item) => {
             return (
               <List
-                key={item.url}
+                key={uuid()}
                 url={item.url}
                 name={item.name}
                 getName={getName}

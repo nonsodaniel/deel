@@ -1,8 +1,8 @@
 import { render, screen } from "@testing-library/react";
+import { mockedData } from "../../utils/helpers";
+import AutoComplete from "./Autocomplete";
 
-import Container from "./Container";
-
-render(<Container />);
+render(<AutoComplete data={mockedData} loading={false} error="" />);
 
 describe("Completely render <Container />", () => {
   test("render the Container section without crashing", () => {

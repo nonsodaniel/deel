@@ -8,15 +8,12 @@ const StatusMessages = ({
   loading,
   error,
 }: IPokemonComponentProps) => {
-  console.log({ searchValue, pokemanMatch });
+  const noMatch =
+    searchValue && data && pokemanMatch.length === 0 && pokemanMatch;
+
   return (
     <Fragment>
-      {searchValue &&
-        pokemanMatch.length === 0 &&
-        pokemanMatch &&
-        !!data.length && (
-          <div className="messsage__container">No match found!</div>
-        )}
+      {noMatch && <div className="messsage__container">No match found!</div>}
       {loading && <div className="messsage__container">Loading...</div>}
       {!loading && error && <div className="messsage__container">{error}</div>}
     </Fragment>
