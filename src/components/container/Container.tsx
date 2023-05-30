@@ -1,30 +1,26 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Input from "../form/Input";
 import "./container.css";
+import useFetch from "../../hooks/useFetch";
+import List from "./List";
+import { IPokemon } from "../types";
 
 const Container = () => {
-  const [pokemans, setPokemans] = useState([]);
-  const [pokemanMatch, setPokemanMatch] = useState([]);
-  const [searchValue, setSearchValue] = useState("");
-
-  useEffect(() => {
-    const loadpokemans = async () => {
-      await fetch("https://pokeapi.co/api/v2/pokemon/")
-        .then((res) => res.json())
-        .then((data) => setPokemans(data.results));
-    };
-    loadpokemans();
-  }, []);
+  const [pokemanMatch, setPokemanMatch] = useState<IPokemon[]>([]);
+  const [searchValue, setSearchValue] = useState<string>("");
+  const { data, loading, error } = useFetch(
+    "https://pokeapi.co/api/v2/pokemon/"
+  );
 
   const searchpokemans = (str: string) => {
     setSearchValue(str);
-    const matches = pokemans.filter((country) => {
+    const matches = data.filter((pokemon: IPokemon) => {
       const regex = new RegExp(`${str}`, "gi");
-      return country.name.match(regex);
+      return pokemon.name.match(regex);
     });
     setPokemanMatch(matches);
   };
-  console.log({ pokemanMatch, searchValue, pokemans });
+
   return (
     <div className="container">
       <div className="auto-complete">
@@ -35,26 +31,15 @@ const Container = () => {
           value={searchValue}
           placeholder={"Enter Pokeman name"}
           required={true}
-          onChange={(event) => searchpokemans(event.target.value)}
+          onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+            searchpokemans(event.target.value)
+          }
         />
-        <div className="dropdown">
-          <ul
-            className="list-wrap"
-            style={{
-              border: !!pokemanMatch.length
-                ? "1px solid rgba(0, 0, 0, 0.125)"
-                : "none",
-            }}
-          >
-            {pokemanMatch &&
-              pokemanMatch.map((item, index) => {
-                return <li className="list__item">Name: {item.name}</li>;
-              })}
-            {searchValue && pokemanMatch.length === 0 && !!pokemans.length && (
-              <li className="notFound__listitem">No match found!</li>
-            )}
-          </ul>
-        </div>
+        <List
+          pokemanMatch={pokemanMatch}
+          searchValue={searchValue}
+          data={data}
+        />
       </div>
     </div>
   );
