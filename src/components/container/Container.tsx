@@ -3,8 +3,8 @@ import Input from "../form/Input";
 import "./container.css";
 import useFetch from "../../hooks/useFetch";
 import { IPokemon } from "../types";
-import Lists from "./Lists";
 import StatusMessages from "./StatusMessages";
+import Lists from "../list/Lists";
 
 const Container = () => {
   const [pokemanMatch, setPokemanMatch] = useState<IPokemon[]>([]);
@@ -37,8 +37,12 @@ const Container = () => {
   };
   const handleFocus = () => setIsListsVisible(true);
   return (
-    <div className="container" onMouseDown={() => setIsListsVisible(false)}>
-      <div className="auto-complete">
+    <div
+      className="container"
+      data-testid="container"
+      onMouseDown={() => setIsListsVisible(false)}
+    >
+      <div className="auto-complete" data-testid="autocomplete">
         <div className="selected-items">
           {!!selectedItems.length &&
             selectedItems.map((item) => (
@@ -60,6 +64,7 @@ const Container = () => {
           onFocus={handleFocus}
           resetSearchValue={resetSearchValue}
           displayResetIcon={true}
+          dataTestId={"search-bar"}
         />
         {isListsVisible && (
           <Lists

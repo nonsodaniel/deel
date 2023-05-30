@@ -9,6 +9,7 @@ interface IInputProps {
   resetSearchValue: () => void;
   displayResetIcon: boolean;
   onFocus: () => void;
+  dataTestId: string;
 }
 
 const Input = ({
@@ -22,6 +23,7 @@ const Input = ({
   resetSearchValue,
   required,
   displayResetIcon = true,
+  dataTestId,
 }: IInputProps) => {
   return (
     <div className="form-group">
@@ -35,6 +37,7 @@ const Input = ({
         onChange={onChange}
         required={required}
         onFocus={onFocus}
+        data-testid={dataTestId}
       />
       {displayResetIcon && (
         <span className="cancel-wrap" onClick={() => resetSearchValue()}>
